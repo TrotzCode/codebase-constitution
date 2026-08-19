@@ -1,11 +1,12 @@
 # Codebase Constitution
 
-A Hermes Agent skill that bootstraps a **codebase constitution** for AI-assisted development —
-the set of instruction files that keep an AI coding assistant consistent across sessions.
+AI-generated code works best with clear guardrails. This skill defines practical codebase rules
+and conventions that help your AI assistant produce consistent, maintainable code that is useful
+beyond a quick prototype.
 
-Before any code, an AI agent produces a lot, fast. Without rules, the parts disagree, use random
-names, and break each other. This skill runs a short interview with you, then generates the
-constitution that keeps the AI on the rails. It is the "house rules" file set, plus a roadmap.
+The skill runs a short interview with you, then generates the **constitution** — the set of
+instruction files that keep an AI coding assistant consistent across sessions.
+It is the "house rules" file set, plus a roadmap.
 
 > Terminology: the artifact this skill produces is called the **constitution** (or "constitution
 > files"). "Conventions" is reserved for per-file style only (naming conventions, conventional
