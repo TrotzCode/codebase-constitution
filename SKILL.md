@@ -1,7 +1,7 @@
 ---
 name: codebase-constitution
 description: "Define a codebase constitution so AI agents produce consistent code."
-version: 3.5.0
+version: 3.5.2
 author: Hermes Agent
 license: MIT
 platforms: [linux, macos, windows]
