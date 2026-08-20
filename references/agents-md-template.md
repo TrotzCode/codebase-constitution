@@ -1,52 +1,79 @@
 # AGENTS.md — {Project Name}
 
-**{One-line description of what this project does}**
+**{One-line description}**
 
-This file is the entry point to the project constitution. Key details live in the files below; this file just orients you.
+This file is the entry point to the project constitution. It holds the project's **stable operating invariants** and should change rarely. Stage-specific detail lives in `docs/project-stage.md` and `docs/architecture.md` — read those before doing stage-sensitive work.
+
+## Primary objective
+
+> Make the smallest correct change that satisfies the active feature contract while preserving existing behaviour and respecting the current project maturity stage ({Prototype / Pilot / Production}).
 
 ## Quick Reference
 
 | Layer | Choice |
-|-------|--------|
-| Language | {Python 3.13 / TypeScript / Go 1.23} |
-| Framework | {FastAPI / Next.js / Gin} |
-| Database | {PostgreSQL 16 / SQLite} |
-| ORM | {SQLAlchemy async / Prisma} |
-| Auth | {JWT / OAuth2 / None yet — see parking-lot} |
+|---|---|
+| Language | {Python / TypeScript / Go / ...} |
+| Framework | {FastAPI / Next.js / ...} |
+| Database | {PostgreSQL / SQLite / None yet} |
+| ORM | {SQLAlchemy / Prisma / ...} |
+| Auth | {None yet / framework-native / managed provider} |
 | Testing | {pytest / vitest / go test} |
 
 ## Source of Truth
 
-For full details on conventions, read these files in order:
+Read in order when a task needs detail:
 
-1. **`docs/specs/architecture.md`** — Full tech stack, project structure, naming, API conventions, data layer rules, security constraints, AI guardrails
-2. **`docs/specs/ontology.md`** — Domain glossary — the exact terms this project uses (read this before writing any user-facing text)
-3. **`docs/features/`** — Feature contracts — per-feature scope, acceptance criteria, and out-of-scope. Read the contract for the feature you're implementing before writing code.
-4. **`docs/adr/0001-stack-decisions.md`** — Why each decision was made
-5. **`docs/parking-lot.md`** — Decisions explicitly deferred, with review triggers
+1. **`docs/project-stage.md`** — current maturity stage, its objective, quality bar, accepted shortcuts, and graduation criteria.
+2. **`docs/architecture.md`** — the architecture that is true today: stack, structure, naming, data layer, typing, API conventions, security/privacy, observability, testing.
+3. **`docs/ontology.md`** — the canonical domain vocabulary. Read before naming anything or writing user-facing text.
+4. **`docs/features/`** — the feature contract for the change you're implementing. Scope control lives here.
+5. **`docs/adr/`** — why significant decisions were made.
+6. **`docs/parking-lot.md`** — deliberately deferred decisions, with revisit triggers. Check whether one of your triggers has fired.
+
+### Document ownership
+- This file (`AGENTS.md`) owns the stable operating invariants.
+- `docs/project-stage.md` owns the current maturity stage and its quality bar.
+- `docs/architecture.md` owns the current technical architecture and conventions.
+- `docs/ontology.md` owns canonical domain terminology.
+- The **active feature contract** owns the scope and acceptance criteria of the current change.
+- ADRs explain why past decisions were made; they don't override current architecture. `docs/parking-lot.md` lists deferred decisions; it isn't current architecture.
+
+If two authoritative sources genuinely conflict within their own areas, **stop and surface the conflict** rather than silently choosing one.
+
+## Stable operating invariants
+
+- Inspect and understand the code before you edit it; plan before substantial implementation
+- The active feature contract controls scope; do not silently expand it
+- Make the smallest change that satisfies the requirement; do not refactor unrelated code
+- Do not commit secrets; do not introduce significant dependencies or architecture without justification
+- Verify before claiming completion; say explicitly what you could not verify
+- Diagnose root causes rather than repeatedly applying speculative fixes
+- Preserve existing behaviour unless the feature contract intentionally changes it
+- Record significant architectural decisions in `docs/adr/`
 
 ## Don't Do
 
-- Do NOT add dependencies outside the approved tech stack without an ADR
-- Do NOT mix sync and async database access
+- Do NOT add dependencies outside the approved stack without an ADR
 - Do NOT put business logic in route handlers
 - Do NOT use raw SQL when the ORM can express the query
-- Do NOT introduce new domain terms not in ontology.md
-- Do NOT skip updating architecture.md when the stack changes
-- Do NOT add abstractions, dependencies, configuration, caches, queues, or feature flags for hypothetical future needs
+- Do NOT introduce domain terms not in ontology.md
+- Do NOT skip updating architecture.md (or an ADR) when the stack or stage changes
+- Do NOT add abstractions, caches, queues, feature flags, or config for hypothetical future needs — park them with a trigger instead
 - Do NOT remove or disable an existing test to make the suite pass
 - Do NOT refactor unrelated code "while you're here" — deletion over addition, boring over clever, fewest files possible
-- Do NOT put customer data, credentials, or personal data into prompts by default — treat it as check-first (see architecture.md → Privacy)
+- Do NOT put customer data, credentials, or personal data into prompts by default — check-first (see architecture.md → Privacy)
+- Do NOT treat an AI "looks fine" review as a substitute for a passing deterministic check (tests/lint/types)
+- Do NOT impose a production technology or workflow that this stage does not justify — follow `docs/project-stage.md`
 
 ## Pre-Flight Check (mandatory)
 
-Before creating or modifying any file, the AI agent MUST:
+Before creating or modifying any file, the AI must:
 
-1. **Quick-scan** the relevant ontology terms — are you using the right names?
-2. **Verify** the file goes in the right directory per architecture.md
-3. **Check** that no forbidden dependencies are introduced
-4. **Confirm** the code pattern matches what architecture.md specifies (same ORM, same error format, same auth pattern)
-5. **Apply the simplicity ladder** in architecture.md — reuse existing or native capability before adding code; park speculative work with a concrete upgrade trigger
-6. **Read before you climb** — trace the real flow of the code you touch before proposing a change; and if you could not verify something (tests, runtime), say so explicitly.
+1. Quick-scan the relevant ontology terms — are you using the canonical names?
+2. Verify the file goes in the right directory per architecture.md
+3. Check no forbidden dependency is introduced
+4. Confirm the code pattern matches architecture.md (same stack, error format, auth, data layer)
+5. Apply the simplicity ladder (reuse existing capability; park speculative work with a trigger)
+6. Read before you climb — trace the real flow of the code you touch; if you could not verify something, say so explicitly
 
-This is a 10-second self-check, not a full review. It prevents the most common AI-generated inconsistencies.
+This is a ~10-second self-check that prevents the most common AI-generated inconsistencies.
