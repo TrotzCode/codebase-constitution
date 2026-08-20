@@ -9,24 +9,6 @@
 
 ## 1. Current Stage & Quality Bar
 
-This project is at **{Prototype / Pilot / Production}**. Apply the stage-appropriate quality bar from `docs/project-stage.md`. The bar raises the *evidence expected* across the dimensions below as the project matures — **not** the size of the technology stack:
-
-| Dimension | Prototype | Pilot | Production |
-|---|---|---|---|
-| Functional correctness | Core workflow works reliably | Stronger regression coverage | Explicit, verified requirements |
-| Security | Basic floor: no committed secrets, input validation, no invented auth | Real authentication/authorization | Hardening and review |
-| Privacy | Controlled/synthetic data | Real data handled intentionally | Defined handling paths |
-| Data durability | Fine with synthetic data | Automated backups + tested restore | Defined retention/recovery |
-| Recoverability | Simple recovery path | Designed, tested recovery | Planned, exercised recovery |
-| Observability | Logs enough to debug | Useful error reporting | Monitoring/alerting |
-| Deployment safety | Minimal | Controlled, staging where justified | Safe deploy + rollback |
-| Performance | Reasonable for the slice | Adequate for real users | Based on measured need |
-| Reliability | Core path dependable | Managed operational failure modes | Explicit, validated |
-
-Before referencing architecture in the request, apply the same proportionality: implement the sections that are true now; grow them as the project does.
-
-## 1. Current Stage & Quality Bar
-
 This project is at **{Prototype / Pilot / Production}**. Apply the stage-appropriate quality bar from `docs/project-stage.md`. In short, evaluate the codebase across these stable dimensions, expecting stronger evidence as the project matures — **not** a bigger technology stack:
 
 | Dimension | Prototype | Pilot | Production |
