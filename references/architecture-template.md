@@ -3,7 +3,27 @@
 **Last Updated:** {YYYY-MM-DD}
 **Project stage:** {Prototype / Pilot / Production}
 
-> The quality bar expected of this project is defined per stage in `docs/project-stage.md`. Everything in this file must be read against that bar. Requirements here are current — when the stage or a decision changes, update this file and record the change in an ADR.
+> **Minimum-sufficient (progressive disclosure).** The sections below are the full menu of possible sections — include only the ones that are true for this project's current stage. Do not emit a section just because it exists here, and never write "not applicable yet" (the section is simply omitted). Grow the document by adding a section only when the concern is real. For a small early Prototype, the document is typically short and may need only a subset, e.g. *system shape*, *current stack*, *simple project structure*, *important implementation conventions*, and *current architectural constraints* — with other sections added as their concerns appear (auth, retained real data, external integrations, workers, deployment complexity, observability, and so on).
+>
+> Document ownership: this file is a **descriptive account of current technical reality** (what is actually true now). It is not the place for maturity aspirations — `docs/project-stage.md` is the normative target for the current stage. If project-stage requires something this file/code does not show, that is a **maturity gap**, not a precedence conflict.
+
+## 1. Current Stage & Quality Bar
+
+This project is at **{Prototype / Pilot / Production}**. Apply the stage-appropriate quality bar from `docs/project-stage.md`. The bar raises the *evidence expected* across the dimensions below as the project matures — **not** the size of the technology stack:
+
+| Dimension | Prototype | Pilot | Production |
+|---|---|---|---|
+| Functional correctness | Core workflow works reliably | Stronger regression coverage | Explicit, verified requirements |
+| Security | Basic floor: no committed secrets, input validation, no invented auth | Real authentication/authorization | Hardening and review |
+| Privacy | Controlled/synthetic data | Real data handled intentionally | Defined handling paths |
+| Data durability | Fine with synthetic data | Automated backups + tested restore | Defined retention/recovery |
+| Recoverability | Simple recovery path | Designed, tested recovery | Planned, exercised recovery |
+| Observability | Logs enough to debug | Useful error reporting | Monitoring/alerting |
+| Deployment safety | Minimal | Controlled, staging where justified | Safe deploy + rollback |
+| Performance | Reasonable for the slice | Adequate for real users | Based on measured need |
+| Reliability | Core path dependable | Managed operational failure modes | Explicit, validated |
+
+Before referencing architecture in the request, apply the same proportionality: implement the sections that are true now; grow them as the project does.
 
 ## 1. Current Stage & Quality Bar
 

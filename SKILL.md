@@ -76,6 +76,7 @@ These principles guide every interview decision and generated file:
 - **Smallest vertical slice first.** Deliver the smallest end-to-end slice that creates a meaningful user outcome, not a bare "one endpoint, one table, one route" formula.
 - **Progressive extraction.** Start flat; extract into modules when a domain has its own language, multiple entry points, distinct change reasons, or difficult-to-test dependencies.
 - **Park, don't guess.** When a decision is not yet justified, record it with a concrete revisit trigger. A parked decision with a trigger beats a random choice you will reverse later. Distinguish "we intentionally do not need this yet" from "we forgot about this".
+- **Minimum-sufficient, progressive disclosure.** Constitution documents contain only information useful for the project as it exists now. The templates define available sections, not mandatory ones. Do not generate speculative, empty, or "not applicable yet" sections merely because a template lists them. As real concerns emerge (auth, retained customer data, external APIs, workers, deploy complexity, observability), grow the relevant documents by adding sections — rather than dropping every template section up front.
 
 ## When to Use
 
@@ -202,7 +203,7 @@ If the user chooses modularity now, capture it in architecture.md; otherwise sta
 
 ## File Generation
 
-After the interview, generate this set:
+After the interview, generate this set. Apply the minimum-sufficient principle: **the templates define available sections, not mandatory ones** — include only what the project's current stage genuinely needs, and grow later as concerns become real.
 
 ### AGENTS.md (project root — short entry point)
 
@@ -210,7 +211,7 @@ A ~20–30 line file the AI reads every session. It contains the positive primar
 
 ### docs/project-stage.md
 
-A short, practical statement of the current stage: the current stage name, its objective, the quality bar for that stage, important assumptions, accepted shortcuts, deferred engineering concerns, and graduation criteria to the next stage.
+The **normative maturity target**: what quality bar applies now, which shortcuts are acceptable, what is intentionally deferred, and what graduation criteria apply to the next stage. Concise, not a design doc — stage, objective, quality bar, assumptions, accepted shortcuts, deferred concerns, graduation criteria.
 
 Example Prototype intent: "Validate that the target user gets value from the core workflow while keeping experiments small, understandable and reversible." Include the Prototype quality baseline — the core workflow works reliably, relevant automated checks pass, manual golden-path verification is possible, no secrets are committed, demo data is reproducible where relevant, deployment is recoverable, meaningful failures can be diagnosed, and important shortcuts are explicit rather than hidden. Do not prematurely require production-layer concerns (infrastructure, scaling, monitoring, formal security process, exhaustive coverage).
 
@@ -218,19 +219,19 @@ See `references/project-stage-template.md`.
 
 ### docs/architecture.md
 
-The detailed, quality-bar-aware constitution that describes the architecture that is *true today*: the full stack, the current stage note, the maturity dimension table (see §Maturity), the simplicity ladder, project structure, dependency and module rules, naming, a **decided-defaults** data layer, typing, API contracts, test approach, security, privacy, observability floor, reproducibility, the stable AI execution directive, and the feature workflow. See `references/architecture-template.md`.
+A **descriptive account of current technical reality** — how the system is actually built today, not aspirations. Include only what is true now and useful. For a small early Prototype this is short and may only need: the system shape, the current stack, the simple project structure, the important implementation conventions, any external dependencies/integrations, and any current architectural constraints. Do not include speculative, empty, or "not applicable yet" sections. As real concerns appear (auth, real data, external APIs, workers, deploy complexity, observability), grow the document by adding the relevant sections. See `references/architecture-template.md`.
 
 ### docs/ontology.md
 
-The current domain language. It documents concepts (canonical term, definition, whether it is a core concept, and where only truly ambiguous synonyms are named). Ontology describes the domain model — it does **not** prescribe the implementation model. Whether a concept is persisted, calculated, transient, externally sourced, or exposed via an API is an architecture/data-model decision, recorded in architecture.md or an ADR, not something the ontology decides. See `references/ontology-template.md`.
+The current domain language. Define only the concepts that are actually useful to the work at hand (canonical term, definition, whether it is a core concept, and only the forbidden synonyms that would genuinely cause ambiguity). Ontology does not prescribe the implementation model — whether a concept is persisted, calculated, transient, or externally sourced is an architecture/data-model decision, recorded in architecture.md or an ADR. Keep it proportionate at Prototype; grow it as the domain language stabilises or expands. See `references/ontology-template.md`.
 
-### docs/adr/0001-stack-decisions.md
+### docs/adr/
 
-An ADR recording each decision — both decided and parked — with the reasoning for it. See `references/adr-template.md`.
+An ADR records the rationale behind a genuinely consequential or non-obvious decision — one a future developer or AI agent could reasonably reopen or accidentally reverse without understanding why. Write an ADR when preserving the reasoning is likely to prevent that (e.g. changing database technology, choosing an authentication strategy, introducing background jobs, choosing tenant isolation, or another expensive commitment). **Do not write an ADR for every conventional stack choice** — a conventional "FastAPI + SQLite for a small Prototype" decision is simply recorded in architecture.md. See `references/adr-template.md`.
 
 ### docs/parking-lot.md
 
-Every deferred decision, each with a concrete revisit trigger, so deliberate deferral is distinguished from "large, dangerous omission". See `references/parking-lot-template.md`.
+Intentionally deferred decisions, each with a concrete revisit trigger, so deliberate deferral is distinguished from a forgotten concern. This is not current architecture — the implemented reality lives in architecture.md. Include only decisions genuinely deferred given the current stage, not every hypothetical future concern. See `references/parking-lot-template.md`.
 
 ### docs/features/
 
@@ -372,12 +373,17 @@ An AI constitution review is **not** equivalent to a passing deterministic check
 
 Run during a stage boundary, e.g. Prototype → Pilot. The existing constitution stays; you produce a **gap analysis**.
 
+The review compares **target vs. reality**:
+- `docs/project-stage.md` = what *should* be true at this maturity
+- `docs/architecture.md` + code + tests = what *is* actually true today
+If project-stage.md requires something the architecture or code does not yet implement, treat that as a **maturity gap**, not a document-precedence conflict. Separately, verify the achieved stage is genuinely represented across the four yes/no buckets.
+
 1. Read project-stage.md, architecture.md, ontology.md, and the parking lot. Read the actual codebase shape.
 2. Compare the current stage against the target stage using the quality-bar (§Maturity); identify the meaningful gaps.
 3. Inspect parking-lot reuse triggers whose condition is now met.
 4. Surface requirements/ risks / capability gaps first; then propose the simplest correct solution; do not introduce new tech just because the stage changed.
 5. Present to the human for decision: which gaps to correct now and which to defer.
-6. Evolve the constitution to reflect the decided changes (architecture.md, project-stage.md, AGENTS.md if needed, new ADRs, and the parking lot).
+6. Evolve the constitution to reflect the decided changes (architecture.md, project-stage.md, AGENTS.md if needed, ADRs for consequential decisions, and the parking lot).
 
 Prototype → Pilot should surface, for example: real authentication and user lifecycle, privacy implications of real customer data, automated and restore-tested backups, staging where justified, improved error reporting and observability, stronger safeguards for destructive schema changes, and the prototype shortcuts whose revisit trigger has now been met. This is only a gap analysis — never automatic technology addition.
 
@@ -427,13 +433,14 @@ Keep requirements contextual to the product. For example, Production does not au
 
 ## Verification (Definition of Done)
 
-- [ ] AGENTS.md exists, short, with a positive primary objective and stable invariant list.
-- [ ] `docs/architecture.md` exists, records the current stage and the dimension table.
-- [ ] `docs/ontology.md` exists, current (evolving at Prototype, last stable later).
+- [ ] Constitution documents are **proportionate to the current stage** — no speculative, empty, or "not applicable yet" sections; each file contains only what is useful now.
+- [ ] `AGENTS.md` exists, short, with a positive primary objective and stable invariant list.
+- [ ] `docs/architecture.md` exists and states the *current technical reality* (what is actually built today), including the current stage and the dimension table where they are relevant.
+- [ ] `docs/ontology.md` exists, with only the concepts currently useful to define; it does not prescribe a DB schema, classes, or endpoints.
 - [ ] `docs/project-stage.md` exists: stage, objective, quality bar, shortcuts, graduation criteria.
 - [ ] A feature contract exists for the first feature, under `docs/features/`.
-- [ ] `docs/adr/0001-stack-decisions.md` records decisions and rationale.
-- [ ] `docs/parking-lot.md` exists; each item has a concrete revisit trigger.
+- [ ] ADRs (if present) exist only for genuinely consequential/non-obvious decisions; a conventional stack choice is recorded in architecture.md, not forced into an ADR.
+- [ ] `docs/parking-lot.md` exists (may be empty or missing if nothing is genuinely deferred); each entry has a concrete revisit trigger.
 - [ ] `docs/roadmap.md` exists.
 - [ ] `.gitignore` and `opencode.json` exist; opencode.json loads only AGENTS.md.
 - [ ] A "constitution check" on a file passes, and the report distinguishes deterministic vs AI-judgement checks.

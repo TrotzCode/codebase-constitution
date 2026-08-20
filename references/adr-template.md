@@ -1,6 +1,10 @@
 # Architecture Decision Record Template
 
-ADRs go in `docs/adr/` and are numbered sequentially (0001, 0002, ...). Name them descriptively: `0001-use-postgresql.md`, `0002-api-versioning.md`.
+ADRs go in `docs/adr/` and are numbered sequentially (0001, 0002, ...). Name them descriptively: `0001-use-postgresql.md`, `0002-choose-auth.md`.
+
+**Use an ADR only for a genuinely consequential or non-obvious decision** — one a future developer or AI agent could reasonably reopen or accidentally reverse without understanding the rationale. Examples: changing database technology, selecting an authentication strategy, introducing background jobs, choosing tenant isolation, or another expensive architecture commitment.
+
+**Do not write an ADR for every conventional stack choice.** A conventional, low-risk "FastAPI + SQLite for a small Prototype" decision is simply recorded in `docs/architecture.md`; an ADR adds ceremony without preserving meaningfully reversible rationale.
 
 Write for another AI agent (or a future you) who has no memory of this conversation. Include enough context that the rationale is self-contained.
 
