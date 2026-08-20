@@ -54,7 +54,7 @@ If two authoritative sources genuinely conflict within their own areas, **stop a
 ## Don't Do
 
 - Do NOT add dependencies outside the approved stack without an ADR
-- Do NOT put business logic in route handlers
+- Do NOT put non-trivial or reusable business logic in route handlers (simple CRUD/read may stay in the handler; extract logic that is complex or reused)
 - Do NOT use raw SQL when the ORM can express the query
 - Do NOT introduce domain terms not in ontology.md
 - Do NOT skip updating architecture.md (or an ADR) when the stack or stage changes
