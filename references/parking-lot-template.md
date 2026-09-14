@@ -8,10 +8,10 @@ This document tracks engineering decisions that were intentionally deferred duri
 
 ## How to use this document
 
-1. When a trigger condition is met, resolve the item before writing code that depends on it.
-2. When a trip occurs, move the resolved decision to an ADR (`docs/adr/`) and mark it "Resolved → ADR-{N}".
+1. When a trigger condition appears met, the agent proposes the item to the human and waits — the agent does not start, move, or resolve a parked item by itself. Only after the human decides, write code that depends on it. The single direction is: agent proposes, human decides.
+2. When a trigger occurs and the human has decided, move the resolved decision to an ADR (`docs/adr/`) and mark it "Resolved → ADR-{N}".
 3. During a **stage-transition review** (e.g. Prototype → Pilot), re-read every trigger and surface entries whose condition is now true — e.g. "application becomes externally accessible", "real customer data arrives", "a second user depends on recovery".
-4. Delete entries only once resolved. Never let items age silently.
+4. Delete entries only once resolved by a human decision. Never let items age silently.
 
 ---
 

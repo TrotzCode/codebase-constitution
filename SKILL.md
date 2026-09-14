@@ -359,6 +359,8 @@ An AI constitution review is **not** equivalent to a passing deterministic check
    - **AI judgement**: review for stack compliance, architecture fit, security, privacy, simplicity/YAGNI, naming, ontology.
 4. Produce a report: every rule is FAIL / WARN / OK, with the kind of verification (deterministic or AI) alongside each line.
 
+A Check covers the conformance of the single touched file only; whole-constitution coherence is the supervisor's standing ownership.
+
 ---
 
 ## Review Action (Stage Transition)
@@ -426,11 +428,12 @@ Keep requirements contextual to the product. For example, Production does not au
 
 - [ ] Constitution documents are **proportionate to the current stage** — no speculative, empty, or "not applicable yet" sections; each file contains only what is useful now.
 - [ ] `AGENTS.md` exists, short, with a positive primary objective and stable invariant list.
-- [ ] `docs/architecture.md` exists and states the *current technical reality* (what is actually built today), including the current stage and the dimension table where they are relevant.
+- [ ] `docs/architecture.md` exists and states the *current technical reality* (what is actually built today), including the current stage and the dimension table.
 - [ ] `docs/ontology.md` exists, with only the concepts currently useful to define; it does not prescribe a DB schema, classes, or endpoints.
 - [ ] `docs/project-stage.md` exists: stage, objective, quality bar, shortcuts, graduation criteria.
 - [ ] A feature contract exists for the first feature, under `docs/features/`.
 - [ ] ADRs (if present) exist only for genuinely consequential/non-obvious decisions; a conventional stack choice is recorded in architecture.md, not forced into an ADR.
-- [ ] `docs/parking-lot.md` exists (may be empty or missing if nothing is genuinely deferred); each entry has a concrete revisit trigger.
+- [ ] `docs/parking-lot.md` exists whenever anything is genuinely deferred, and is omitted only when nothing is; each entry has a concrete revisit trigger.
 - [ ] `.gitignore` and `opencode.json` exist; opencode.json loads only AGENTS.md.
 - [ ] A "constitution check" on a file passes, and the report distinguishes deterministic vs AI-judgement checks.
+- [ ] Link closure: every Source of Truth entry in `AGENTS.md` resolves to an existing file, and every emitted document is listed there.
