@@ -84,7 +84,6 @@ These principles guide every interview decision and generated file:
 - "Help me set up a new project for AI coding" or "bootstrap a project constitution for [description]"
 - "Check this file against the constitution"
 - "Review my readiness for Pilot / Production" — a maturity stage transition
-- "Update the constitution" or "I changed my mind about [decision]"
 - **Not for:** one-off scripts or throwaway experiments (use the `spike` skill).
 
 ## How to Invoke

@@ -104,9 +104,8 @@ In Hermes:
 > Load codebase-constitution skill.
 > I want to build [describe your project].
 
-After bootstrap, the skill also supports **Check** (validate a file against the constitution),
-**Review** (stage-transition readiness), and **Update** (change a decision without
-re-interviewing). For product thinking first, pair with the `product-roadmap` skill.
+After bootstrap, the skill also supports **Check** (validate a file against the constitution)
+and **Review** (stage-transition readiness). For product thinking first, pair with the `product-roadmap` skill.
 
 ## License
 
