@@ -7,7 +7,7 @@ work at every project stage. Store it under `docs/features/`.
 | Field | Content |
 |:---|:---|
 | **Feature** | A short name, e.g. "View shipment status" |
-| **Status** | `proposed` / `active` / `done` — changed only by contract completion plus human reprioritization |
+| **Status** | `proposed` / `active` / `done` — `done` when acceptance criteria are met and the work is accepted; `proposed` to `active` and any reprioritization require human decision |
 | **User** | Who this is for, e.g. "Industrial CO₂ supplier" |
 | **User outcome** | What they get out of it, e.g. "Understand where my shipment is and when it arrives" |
 | **Happy path** | Numbered steps, e.g. 1) Open shipments → 2) Select shipment → 3) See status, volume, ETA |
