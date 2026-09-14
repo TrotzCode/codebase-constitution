@@ -207,7 +207,7 @@ A ~20–30 line file the AI reads every session. It contains the positive primar
 
 ### docs/project-stage.md
 
-The **normative maturity target**: what quality bar applies now, which shortcuts are acceptable, what is intentionally deferred, and what graduation criteria apply to the next stage. Concise, not a design doc — stage, objective, quality bar, assumptions, accepted shortcuts, deferred concerns, graduation criteria.
+The **normative maturity target**: what quality bar applies now, which shortcuts are acceptable, what is intentionally deferred, and what graduation criteria apply to the next stage. Concise, not a design doc — stage, objective, intent (milestones/build order; live sequencing stays with the supervising firstmate backlog), quality bar, assumptions, accepted shortcuts, deferred concerns, graduation criteria.
 
 Example Prototype intent: "Validate that the target user gets value from the core workflow while keeping experiments small, understandable and reversible." Include the Prototype quality baseline — the core workflow works reliably, relevant automated checks pass, manual golden-path verification is possible, no secrets are committed, demo data is reproducible where relevant, deployment is recoverable, meaningful failures can be diagnosed, and important shortcuts are explicit rather than hidden. Do not prematurely require production-layer concerns (infrastructure, scaling, monitoring, formal security process, exhaustive coverage).
 
@@ -215,7 +215,7 @@ See `references/project-stage-template.md`.
 
 ### docs/architecture.md
 
-A **descriptive account of current technical reality** — how the system is actually built today, not aspirations. Include only what is true now and useful. For a small early Prototype this is short and may only need: the system shape, the current stack, the simple project structure, the important implementation conventions, any external dependencies/integrations, and any current architectural constraints. Do not include speculative, empty, or "not applicable yet" sections. As real concerns appear (auth, real data, external APIs, workers, deploy complexity, observability), grow the document by adding the relevant sections. See `references/architecture-template.md`.
+A **descriptive account of current technical reality** — how the system is actually built today, with any approved target held in a separate column so an aspiration never reads as a fact. Include only what is true now and useful. For a small early Prototype this is short and may only need: the system shape, the current stack, the simple project structure, the important implementation conventions, any external dependencies/integrations, and any current architectural constraints. Do not include speculative, empty, or "not applicable yet" sections. As real concerns appear (auth, real data, external APIs, workers, deploy complexity, observability), grow the document by adding the relevant sections. See `references/architecture-template.md`.
 
 ### docs/ontology.md
 
@@ -231,7 +231,7 @@ Intentionally deferred decisions, each with a concrete revisit trigger, so delib
 
 ### docs/features/
 
-Per-feature contract files written at the start of each feature (Step 0), each with scope, acceptance criteria, assumptions/constraints, and the golden path when demo-critical. See `references/feature-contract-template.md`.
+Per-feature contract files written at the start of each feature (Step 0), each with status (`proposed` / `active` / `done` per the template's transition rule), scope, acceptance criteria, assumptions/constraints, and the golden path when demo-critical. See `references/feature-contract-template.md`.
 
 ### opencode.json
 
