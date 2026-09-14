@@ -436,4 +436,4 @@ Keep requirements contextual to the product. For example, Production does not au
 - [ ] `docs/parking-lot.md` exists whenever anything is genuinely deferred, and is omitted only when nothing is; each entry has a concrete revisit trigger.
 - [ ] `.gitignore` and `opencode.json` exist; opencode.json loads only AGENTS.md.
 - [ ] A "constitution check" on a file passes, and the report distinguishes deterministic vs AI-judgement checks.
-- [ ] Link closure: every Source of Truth entry in `AGENTS.md` resolves to an existing file, and every emitted document is listed there.
+- [ ] Link closure: every Source of Truth entry in `AGENTS.md` resolves to an existing file, and every emitted constitution document under `docs/` is covered by a Source of Truth entry.
