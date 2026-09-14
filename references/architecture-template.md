@@ -27,9 +27,9 @@ This project is at **{Prototype / Pilot / Production}**. Apply the stage-appropr
 
 ## 2. Tech Stack
 
-Each row states the current reality separately from the approved target, so an aspiration never reads as a fact. The target column holds an approved change or "—" when none is approved.
+Each row states the current reality separately from the approved target, so an aspiration never reads as a fact. The target column holds an approved change (with its version stated inline when it differs) or "—" when none is approved. The version column versions the Current reality only.
 
-| Layer | Current reality (what the code uses today) | Approved target (or —) | Version | Purpose |
+| Layer | Current reality (what the code uses today) | Approved target (or —) | Version of Current reality | Purpose |
 |:---|:---|:---|:---|:---|
 | **Runtime** | {Python / Node / Go / ...} | {—} | {3.13 / 22 / 1.23} | Primary runtime |
 | **Web Framework** | {FastAPI / Express / Next.js / Gin} | {—} | {latest} | Web/API server |

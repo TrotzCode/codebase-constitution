@@ -20,7 +20,7 @@ Milestones, build order, and why — what comes first, what follows, and why tha
 
 - {e.g. first the core read path, then writes, then sharing — because each step proves the value the next step depends on}
 
-Reviewed at stage cadence; never live task sequencing. Ordering and live work-state belong to the supervising backlog — this section records intent, not assignments.
+Reviewed at stage cadence; never live task sequencing. Ordering and live work-state belong to the supervising firstmate backlog — this section records intent, not assignments.
 
 ### Quality bar appropriate to this stage
 
