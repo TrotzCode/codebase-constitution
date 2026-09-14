@@ -106,11 +106,6 @@ When a project is moving between maturity stages, inspect the *existing* constit
 > Load codebase-constitution skill.
 > Review my readiness to move from Prototype to Pilot (or: "now that we have external users, prepare constitution for Pilot").
 
-### Update mode
-
-> Load codebase-constitution skill.
-> Update the constitution: we switched from SQLite to PostgreSQL.
-
 ---
 
 ## The Bootstrap Interview (proportionate)
@@ -236,10 +231,6 @@ Intentionally deferred decisions, each with a concrete revisit trigger, so delib
 ### docs/features/
 
 Per-feature contract files written at the start of each feature (Step 0), each with scope, acceptance criteria, assumptions/constraints, and the golden path when demo-critical. See `references/feature-contract-template.md`.
-
-### docs/roadmap.md
-
-A prioritized backlog with milestones and nice-to-haves. See `references/roadmap-template.md`. Prefer the `product-roadmap` skill when product strategy is the real need; this generates the minimal technical backlog.
 
 ### opencode.json
 
@@ -407,7 +398,7 @@ Keep requirements contextual to the product. For example, Production does not au
 1. `git init`, then initial commit.
 2. Create the project with the chosen stack, wired to the structure in architecture.md.
 3. Choose the first feature: the smallest vertical slice — and have the coding agent write a feature contract before writing code.
-4. Use the roadmap for what's next; use project-stage.md as the current bar.
+4. Use project-stage.md as the current bar.
 5. Conduct a deliberate Review pass before each stage boundary.
 
 ---
@@ -415,7 +406,6 @@ Keep requirements contextual to the product. For example, Production does not au
 ## Troubleshooting
 
 - **AI not following the constitution:** confirm AGENTS.md is found by the tool, no per-agent CLAUDE.md/.cursorrules overrides it, and restart the session.
-- **Constitution getting outdated:** run Update mode; move resolved parking-lot items to ADRs; bump Last-Updated dates when you change project-stage/architecture/ontology.
 - **Multiple agents produce inconsistent code.** Enforce a single source-of-truth set of files across all agents; forbid per-agent shadow rules; lean on deterministic tooling where possible.
 
 ---
@@ -441,6 +431,5 @@ Keep requirements contextual to the product. For example, Production does not au
 - [ ] A feature contract exists for the first feature, under `docs/features/`.
 - [ ] ADRs (if present) exist only for genuinely consequential/non-obvious decisions; a conventional stack choice is recorded in architecture.md, not forced into an ADR.
 - [ ] `docs/parking-lot.md` exists (may be empty or missing if nothing is genuinely deferred); each entry has a concrete revisit trigger.
-- [ ] `docs/roadmap.md` exists.
 - [ ] `.gitignore` and `opencode.json` exist; opencode.json loads only AGENTS.md.
 - [ ] A "constitution check" on a file passes, and the report distinguishes deterministic vs AI-judgement checks.

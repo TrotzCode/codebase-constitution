@@ -28,7 +28,7 @@ The `instructions` field loads full file content into every prompt. Keep it mini
 ## In-project documentation (via AGENTS.md)
 
 Only AGENTS.md is loaded into every session. The rest of the constitution (architecture.md,
-ontology.md, feature contracts under `docs/features/`, ADRs, parking-lot.md, roadmap.md) lives
+ontology.md, feature contracts under `docs/features/`, ADRs, parking-lot.md) lives
 *inside* the project and is surfaced to the agent through **AGENTS.md's "Source of Truth" list** —
 the agent reads a detail file only when it needs it. That is the correct pattern for in-project
 docs and costs roughly AGENTS.md's ~200 tokens per turn.
@@ -118,22 +118,3 @@ Run `/init` inside OpenCode's TUI to automatically generate AGENTS.md:
 - May ask a few targeted questions
 - Creates or updates AGENTS.md with project-specific guidance
 - If AGENTS.md already exists, improves it in place rather than replacing
-
-## Roadmap Command
-
-OpenCode custom commands allow you to define reusable prompts in `.opencode/commands/`. Use this for a `/roadmap` command that reads the project's `docs/roadmap.md` and helps plan work:
-
-```markdown
----
-description: Show roadmap, suggest next feature, or plan a specific one
-agent: plan
----
-
-You are in roadmap planning mode. Read @docs/roadmap.md.
-
-If no arguments given: summarize backlog, suggest next Ready item.
-If arguments given (feature name): read architecture.md + ontology.md
-and create a detailed implementation plan.
-```
-
-The `agent: plan` setting runs this with read-only permissions — the AI can analyze and plan without making changes.

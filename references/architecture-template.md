@@ -44,7 +44,7 @@ This project is at **{Prototype / Pilot / Production}**. Apply the stage-appropr
 
 ### Approved External Dependencies
 
-Do **not** install unlisted third-party packages. Adding one requires an ADR and, to respect privacy, must be documented in `.env.example` only. List approved deps here:
+Do **not** install unlisted third-party packages. Adding one requires an ADR. List approved deps here:
 
 ```
 {FastAPI / SQLAlchemy / alembic / pydantic / httpx / pytest / ...}
@@ -196,7 +196,7 @@ Match the choice to the case: a simple CRUD read may call the ORM directly in th
 
 ## 13. Security
 
-- Zero secrets in code — env or secret manager; commit only `.env.example`.
+- Zero secrets in code — env or secret manager; never commit secrets.
 - Input validation at every trust boundary.
 - ORM parameterized everywhere; raw `f"SELECT…"` forbidden.
 - CSRF for session auth; HTTPS in any deployed environment.
@@ -220,7 +220,6 @@ No monitoring stack required for Prototype; add (Grafana/Prometheus etc.) only w
 ## 16. Reproducibility
 
 - Lock dependency files.
-- `.env.example` (never `.env`).
 - Document install/start/test/config in README.
 - If only one machine can run it, it isn't reproducible yet.
 
@@ -250,7 +249,7 @@ Every feature follows this cycle; don't skip steps.
 - **Step 4 — Verify**: `pytest` / `npm test` / `go test ./...`, `{mypy --strict}` / `{tsc --noEmit}`, linter, constitution check on changed files.
 - **Step 5 — Commit** with `git add` + conventional message (`feat:`, `fix:`, `refactor:`, `test:`, `docs:`, `chore:`).
 
-**Failure handling:** fail → revisit step; a failed verification never silently bypassed; an architecture bug → Update mode first.
+**Failure handling:** fail → revisit step; a failed verification never silently bypassed.
 
 ## 19. Parked Decisions
 
