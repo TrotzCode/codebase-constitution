@@ -44,6 +44,8 @@ System" below. Files the agent already sees with ordinary file tools don't need 
 | `instructions: ["AGENTS.md"]` only; detail files via Source-of-Truth list (recommended) | ~200 tokens |
 | `instructions` with all detail files eagerly loaded | ~4,000 tokens |
 
+The committed constitution files hold product knowledge — what the product is, why it is shaped this way, what is deferred, and what good means at its stage. Ordering and live work-state belong to the supervising firstmate backlog, which assigns work, tracks state, and pages the human; no constitution document assigns, sequences, or tracks work. Where stale timing prose in a document disagrees with the backlog about what comes next, the backlog wins — flag the prose as drift instead of guessing.
+
 ## Recommended Permissions
 
 Set safe defaults that allow productive work while preventing accidents:

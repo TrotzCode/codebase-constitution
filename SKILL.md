@@ -41,6 +41,8 @@ Each source owns one concern. When they appear to conflict, the owner of the aff
 
 If two genuinely authoritative documents conflict within their own areas (e.g. stage vs. architecture disagree on a requirement), **stop and surface the contradiction** for the human rather than silently choosing one.
 
+The committed constitution files hold product knowledge — what the product is, why it is shaped this way, what is deferred, and what good means at its stage. Ordering and live work-state belong to the supervising firstmate backlog, which assigns work, tracks state, and pages the human; no constitution document assigns, sequences, or tracks work. Where stale timing prose in a document disagrees with the backlog about what comes next, the backlog wins — flag the prose as drift instead of guessing.
+
 ## Project Maturity Stage
 
 Every project has a maturity stage, recorded in `docs/project-stage.md`. The stage determines **what engineering investment is justified**, not whether disciplined development applies.

@@ -40,6 +40,8 @@ Read in order when a task needs detail:
 
 If two authoritative sources genuinely conflict within their own areas, **stop and surface the conflict** rather than silently choosing one.
 
+The committed constitution files hold product knowledge — what this product is, why it is shaped this way, what is deferred, and what good means at the current stage. Ordering and live work-state belong to the supervising firstmate backlog, which assigns work, tracks state, and pages the human; no constitution document assigns, sequences, or tracks work. Where stale timing prose in a document disagrees with the backlog about what comes next, the backlog wins — flag the prose as drift instead of guessing.
+
 ## Stable operating invariants
 
 - Inspect and understand the code before you edit it; plan before substantial implementation
