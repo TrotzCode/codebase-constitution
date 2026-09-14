@@ -6,7 +6,7 @@ beyond a quick prototype.
 
 The skill runs a short interview with you, then generates the **constitution** — the set of
 instruction files that keep an AI coding assistant consistent across sessions. It is the "house
-rules" file set, plus a roadmap.
+rules" file set.
 
 > Terminology: the artifact this skill produces is called the **constitution** (or "constitution
 > files"). The generator is this skill, `codebase-constitution`.
@@ -43,8 +43,7 @@ document owns one concern, and together they form a precedence-ordered set:
   conventional stack choices are recorded in architecture.md instead.
 - `docs/parking-lot.md` — intentionally deferred decisions, each with a concrete revisit trigger,
   distinguishing "we don't need this yet" from "we forgot."
-- `docs/roadmap.md` — feature backlog, milestones, priorities.
-- `opencode.json`, `.gitignore`, `.env.example`.
+- `opencode.json` and `.gitignore`.
 
 ## Key rules it bakes in (v3.5.2)
 
@@ -70,7 +69,7 @@ document owns one concern, and together they form a precedence-ordered set:
   data never casually becomes test/AI input.
 - **Protected data changes**: destructive or hard-to-reverse schema/data operations go through an
   explicit approval gate; ordinary additive migrations are routine.
-- **Observability floor + reproducibility**: logs/health/error reporting; lockfiles, `.env.example`,
+- **Observability floor + reproducibility**: logs/health/error reporting; lockfiles
   and a runnable-on-any-machine README from day one.
 - **Root-cause fixes** (grep every caller), **no disabling tests**, `simplify:` markers harvested
   into the parking lot.
@@ -105,9 +104,8 @@ In Hermes:
 > Load codebase-constitution skill.
 > I want to build [describe your project].
 
-After bootstrap, the skill also supports **Check** (validate a file against the constitution),
-**Review** (stage-transition readiness), and **Update** (change a decision without
-re-interviewing). For product thinking first, pair with the `product-roadmap` skill.
+After bootstrap, the skill also supports **Check** (validate a file against the constitution)
+and **Review** (stage-transition readiness). For product thinking first, pair with the `product-roadmap` skill.
 
 ## License
 
