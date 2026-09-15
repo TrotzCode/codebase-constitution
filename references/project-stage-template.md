@@ -14,6 +14,14 @@ One or two sentences on what this stage is trying to establish. For a Prototype:
 
 > Validate that the target user gets value from the core workflow while keeping experiments small, understandable and reversible.
 
+## Intent — milestones and build order
+
+Milestones, build order, and why — what comes first, what follows, and why that order:
+
+- {e.g. first the core read path, then writes, then sharing — because each step proves the value the next step depends on}
+
+Reviewed at stage cadence; never live task sequencing. Ordering and live work-state belong to the supervising firstmate backlog — this section records intent, not assignments.
+
 ### Quality bar appropriate to this stage
 
 What must be true at this stage. The bar always includes fundamentals (core workflow works reliably, relevant automated checks pass, manual golden-path verification is possible, no secrets are committed, demo/test data is reproducible where relevant, deployment is recoverable, meaningful failures can be diagnosed, important shortcuts are explicit rather than hidden). It deliberately excludes concerns the stage does not yet justify (production infra, scaling, comprehensive monitoring, formal security process, exhaustive test coverage) unless evidence changes that.
@@ -53,5 +61,5 @@ The buttons below are inputs to a human decision — meeting them does not itsel
 
 ## Notes
 
-- Do not put a technology roadmap here. This file records the *stage*, not the stack.
+- Intent (milestones, build order, why) belongs here and is reviewed at stage cadence; a technology roadmap does not — this file records the *stage*, not the stack.
 - When the stage changes, update this file and run a stage transition review of the constitution (architecture.md, ontology.md, ADRs, parking lot).

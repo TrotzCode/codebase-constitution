@@ -10,14 +10,16 @@ This file is the entry point to the project constitution. It holds the project's
 
 ## Quick Reference
 
-| Layer | Choice |
-|---|---|
-| Language | {Python / TypeScript / Go / ...} |
-| Framework | {FastAPI / Next.js / ...} |
-| Database | {PostgreSQL / SQLite / None yet} |
-| ORM | {SQLAlchemy / Prisma / ...} |
-| Auth | {None yet / framework-native / managed provider} |
-| Testing | {pytest / vitest / go test} |
+Each slot states the current reality separately from the approved target, so an aspiration never reads as a fact. The target column holds an approved change or "—" when none is approved.
+
+| Layer | Current reality (what the code uses today) | Approved target (or —) |
+|---|---|---|
+| Language | {Python / TypeScript / Go / ...} | {—} |
+| Framework | {FastAPI / Next.js / ...} | {—} |
+| Database | {in-memory / SQLite / PostgreSQL / None yet} | {—} |
+| ORM | {SQLAlchemy / Prisma / ...} | {—} |
+| Auth | {None yet / framework-native / managed provider} | {—} |
+| Testing | {pytest / vitest / go test} | {—} |
 
 ## Source of Truth
 
@@ -79,3 +81,7 @@ Before creating or modifying any file, the AI must:
 6. Read before you climb — trace the real flow of the code you touch; if you could not verify something, say so explicitly
 
 This is a ~10-second self-check that prevents the most common AI-generated inconsistencies.
+
+---
+
+<!-- generator: codebase-constitution v{version} — keep this footer on new generated outputs and update the version on regeneration -->
