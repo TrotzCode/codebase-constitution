@@ -82,6 +82,8 @@ Before creating or modifying any file, the AI must:
 
 This is a ~10-second self-check that prevents the most common AI-generated inconsistencies.
 
+Finish: after the work is done and before claiming completion, re-check what you touched against the invariants above and flag any project document the work proved wrong — a changed stack or convention, a fired parking-lot revisit condition, an obsolete shortcut or assumption. Put the flag in the completion report with the fix scoped; do not redesign the docs on your own.
+
 ---
 
 <!-- generator: codebase-constitution v{version} — keep this footer on new generated outputs and update the version on regeneration -->
